@@ -62,8 +62,8 @@ function fetchFailure(status = 401, statusText = "Error") {
   });
 }
 
-describe("createPost", () => {
-  it("Returns a valid item object when new post is created", async () => {
+describe("Login functionality", () => {
+  it("Returns a valid item object when on successeful loggin", async () => {
     global.fetch = jest.fn(() => fetchSuccess());
     const item = await login();
     expect(item).toEqual(TEST_ITEM);
