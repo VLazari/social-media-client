@@ -1,9 +1,10 @@
 Cypress.Commands.add("login", () => {
-  cy.get("#registerForm .modal-header .btn-close").click().wait(500);
-  cy.get("header").find('button[data-auth="login"]').click({ force: true });
-  cy.get("#loginForm").should("be.visible").wait(500);
+  cy.get("#registerForm button").contains("Login").click();
+  cy.wait(500);
   cy.get("#loginEmail").type(`testv@noroff.no`);
+  cy.wait(500);
   cy.get("#loginPassword").type(`testvpass`);
+  cy.wait(500);
   cy.get("#loginForm button").contains("Login").click();
 });
 

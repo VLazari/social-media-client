@@ -1,9 +1,12 @@
 Cypress.Commands.add("login", () => {
-  cy.get("#registerForm .modal-header .btn-close").click().wait(500);
-  cy.get("header").find('button[data-auth="login"]').click({ force: true });
-  cy.get("#loginForm").should("be.visible").wait(500);
-  cy.get("#loginEmail").type(`testv@noroff.no`);
-  cy.get("#loginPassword").type(`testvpass`);
+  cy.get("#registerForm button").contains("Login").click();
+  cy.wait(500);
+  cy.get("#loginForm").within(() => {
+    cy.get("#loginEmail").type(`testv@noroff.no`);
+  });
+  cy.wait(500);
+  cy.get("#loginForm #loginPassword").type(`testvpass`);
+  cy.wait(500);
   cy.get("#loginForm button").contains("Login").click();
 });
 
@@ -16,15 +19,19 @@ describe("Social Media App - login", () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.visit("http://127.0.0.1:5500");
+    cy.wait(500);
     cy.login();
     cy.wait(500);
   });
 
   it("Can not create post without post title", () => {
     cy.get("#footerActions > .btn-outline-success").click();
-    cy.get("#postTags").clear().type(`${postTag}`);
-    cy.get("#postMedia").clear().type(`${postMedia}`);
-    cy.get("#postBody").clear().type(`${postBody}`);
+    cy.get("#postTags").type(`${postTag}`);
+    cy.wait(500);
+    cy.get("#postMedia").type(`${postMedia}`);
+    cy.wait(500);
+    cy.get("#postBody").type(`${postBody}`);
+    cy.wait(500);
     cy.get('[data-action="publish"]').click();
     cy.get("#postForm").then(
       ($form) => expect($form[0].checkValidity()).to.be.false
@@ -34,9 +41,13 @@ describe("Social Media App - login", () => {
   it("Can not create post with invalid post Media", () => {
     cy.get("#footerActions > .btn-outline-success").click();
     cy.get("#postTitle").clear().type(`${postTitle}`);
+    cy.wait(500);
     cy.get("#postTags").clear().type(`${postTag}`);
+    cy.wait(500);
     cy.get("#postMedia").clear().type(`invalidurl`);
+    cy.wait(500);
     cy.get("#postBody").clear().type(`${postBody}`);
+    cy.wait(500);
     cy.get('[data-action="publish"]').click();
     cy.get("#postForm").then(
       ($form) => expect($form[0].checkValidity()).to.be.false
@@ -46,9 +57,13 @@ describe("Social Media App - login", () => {
   it("Can create post with valid credential and delete it", () => {
     cy.get("#footerActions > .btn-outline-success").click();
     cy.get("#postTitle").clear().type(`${postTitle}`);
+    cy.wait(500);
     cy.get("#postTags").clear().type(`${postTag}`);
+    cy.wait(500);
     cy.get("#postMedia").clear().type(`${postMedia}`);
+    cy.wait(500);
     cy.get("#postBody").clear().type(`${postBody}`);
+    cy.wait(500);
     cy.get('[data-action="publish"]').click();
     cy.get("#nav-default").should("be.visible");
     cy.get("#nav-default b").should("be.visible").contains(postTitle);
