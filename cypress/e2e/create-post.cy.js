@@ -1,9 +1,7 @@
 Cypress.Commands.add("login", () => {
   cy.get("#registerForm button").contains("Login").click();
-  cy.wait(500);
-  cy.get("#loginForm").within(() => {
-    cy.get("#loginEmail").type(`testv@noroff.no`);
-  });
+  cy.wait(5000);
+  cy.get("#loginForm").find("#loginEmail").type(`testv@noroff.no`);
   cy.wait(500);
   cy.get("#loginForm #loginPassword").type(`testvpass`);
   cy.wait(500);
