@@ -24,7 +24,7 @@ describe("Social Media App - create post", () => {
 
   it("Can not create post without post title", () => {
     cy.get("#footerActions > .btn-outline-success").click();
-    cy.wait(500);
+    cy.wait(1000);
     cy.get("#postTags").clear().type(`${postTag}`);
     cy.wait(500);
     cy.get("#postMedia").clear().type(`${postMedia}`);
@@ -39,7 +39,7 @@ describe("Social Media App - create post", () => {
 
   it("Can not create post with invalid post Media", () => {
     cy.get("#footerActions > .btn-outline-success").click();
-    cy.wait(500);
+    cy.wait(1000);
     cy.get("#postTitle").clear().type(`${postTitle}`);
     cy.wait(500);
     cy.get("#postTags").clear().type(`${postTag}`);
@@ -56,7 +56,7 @@ describe("Social Media App - create post", () => {
 
   it("Can create post with valid credential and delete it", () => {
     cy.get("#footerActions > .btn-outline-success").click();
-    cy.wait(500);
+    cy.wait(1000);
     cy.get("#postTitle").clear().type(`${postTitle}`);
     cy.wait(500);
     cy.get("#postTags").clear().type(`${postTag}`);
