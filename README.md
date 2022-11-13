@@ -6,7 +6,7 @@
 
 2. Install dependencies: **npm i**
 
-3.Install SASS: **npm run build**
+3. Install SASS: **npm run build**
 
 ## Tests
 
