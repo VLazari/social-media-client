@@ -25,8 +25,6 @@ describe("Social Media App - create post", () => {
   it("Can not create post without post title", () => {
     cy.get("#footerActions > .btn-outline-success").click();
     cy.wait(500);
-    cy.get("#postTitle").clear();
-    cy.wait(500);
     cy.get("#postTags").clear().type(`${postTag}`);
     cy.wait(500);
     cy.get("#postMedia").clear().type(`${postMedia}`);

@@ -22,6 +22,7 @@ describe("Social Media App - logout", () => {
 
   it("Logout user", () => {
     cy.get("header").find('[data-auth="logout"]').click();
+    cy.wait(500);
     cy.get("#registerForm").should("be.visible");
   });
 });
