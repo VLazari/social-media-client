@@ -16,7 +16,7 @@ describe("Social Media App - login", () => {
   const postBody = "e2e test body";
   beforeEach(() => {
     cy.clearLocalStorage();
-    cy.visit("http://127.0.0.1:5500");
+    cy.visit("/");
     cy.wait(500);
     cy.login();
     cy.wait(500);

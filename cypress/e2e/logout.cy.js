@@ -13,7 +13,7 @@ Cypress.Commands.add("login", () => {
 
 describe("Social Media App - login", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:5500");
+    cy.visit("/");
     cy.wait(500);
     cy.clearLocalStorage();
     cy.login();

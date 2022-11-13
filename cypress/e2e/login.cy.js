@@ -5,7 +5,7 @@ describe("Social Media App - login", () => {
   const invalidPassword = "wrongpass";
   beforeEach(() => {
     cy.clearLocalStorage();
-    cy.visit("http://127.0.0.1:5500");
+    cy.visit("/");
     cy.wait(500);
     cy.get("#registerForm .modal-header .btn-close").click().wait(500);
   });
