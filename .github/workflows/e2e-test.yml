@@ -12,6 +12,6 @@ jobs:
         uses: actions/checkout@master
 
       - name: run cypress tests with electron
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v2
         with:
           browser: electron
