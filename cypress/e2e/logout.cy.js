@@ -11,7 +11,7 @@ Cypress.Commands.add("login", () => {
   cy.get("#loginForm button").contains("Login").click();
 });
 
-describe("Social Media App - login", () => {
+describe("Social Media App - logout", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.wait(500);
