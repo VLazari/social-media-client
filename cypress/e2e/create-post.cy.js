@@ -24,12 +24,13 @@ describe("Social Media App - create post", () => {
 
   it("Can not create post without post title", () => {
     cy.get("#footerActions > .btn-outline-success").click();
+    cy.get("#postTitle").clear();
     cy.wait(500);
-    cy.get("#postTags").type(`${postTag}`);
+    cy.get("#postTags").clear().type(`${postTag}`);
     cy.wait(500);
-    cy.get("#postMedia").type(`${postMedia}`);
+    cy.get("#postMedia").clear().type(`${postMedia}`);
     cy.wait(500);
-    cy.get("#postBody").type(`${postBody}`);
+    cy.get("#postBody").clear().type(`${postBody}`);
     cy.wait(500);
     cy.get('[data-action="publish"]').click();
     cy.get("#postForm").then(
