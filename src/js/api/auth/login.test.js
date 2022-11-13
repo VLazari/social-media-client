@@ -23,11 +23,16 @@ class LocalStorageMock {
 
 global.localStorage = new LocalStorageMock();
 
+const validMail = "email@noroff.no";
+const invalidEmail = "email.gmail.com";
+const mailRegEx = /\w+@noroff.no|\w+@stud.noroff.no/;
+const pass = "password";
+
 const TEST_ITEM = {
   name: "testName",
-  email: "email@noroff.no",
+  email: validMail,
   banner: "bannerURL",
-  accesToken: "testTocken",
+  accesToken: "987h46734vggv",
   avatar: "avatarURL",
 };
 
@@ -65,12 +70,13 @@ function fetchFailure(status = 401, statusText = "Error") {
 describe("Login functionality", () => {
   it("Returns a valid item object when on successeful loggin", async () => {
     global.fetch = jest.fn(() => fetchSuccess());
-    const item = await login();
+    const item = await login(validMail, pass);
+    expect(validMail).toMatch(mailRegEx);
     expect(item).toEqual(TEST_ITEM);
   });
 
   it("Should throw an error if email or password are incorect", async () => {
     global.fetch = jest.fn(() => fetchFailure());
-    await expect(login()).rejects.toThrow(Error);
+    await expect(login(invalidEmail, pass)).rejects.toThrow(Error);
   });
 });

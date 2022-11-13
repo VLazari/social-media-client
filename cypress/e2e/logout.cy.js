@@ -1,17 +1,21 @@
 Cypress.Commands.add("login", () => {
-  cy.get("#registerForm button").contains("Login").click();
+  cy.get("#registerForm .modal-footer")
+    .find("button")
+    .contains("Login")
+    .click();
   cy.wait(500);
-  cy.get("#loginEmail").type(`testv@noroff.no`);
+  cy.get("#loginForm").find("#loginEmail").type(`testv@noroff.no`);
   cy.wait(500);
-  cy.get("#loginPassword").type(`testvpass`);
+  cy.get("#loginForm #loginPassword").type(`testvpass`);
   cy.wait(500);
   cy.get("#loginForm button").contains("Login").click();
 });
 
 describe("Social Media App - login", () => {
   beforeEach(() => {
-    cy.clearLocalStorage();
     cy.visit("http://127.0.0.1:5500");
+    cy.wait(500);
+    cy.clearLocalStorage();
     cy.login();
     cy.wait(500);
   });

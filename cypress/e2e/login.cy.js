@@ -6,6 +6,7 @@ describe("Social Media App - login", () => {
   beforeEach(() => {
     cy.clearLocalStorage();
     cy.visit("http://127.0.0.1:5500");
+    cy.wait(500);
     cy.get("#registerForm .modal-header .btn-close").click().wait(500);
   });
 
