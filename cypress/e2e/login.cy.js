@@ -34,6 +34,7 @@ describe("Social Media App - login", () => {
     cy.get("#loginEmail").type(`${validEmail}`);
     cy.get("#loginPassword").type(`${validPassword}`);
     cy.get("#loginForm button").contains("Login").click();
+    cy.wait(500);
     cy.url().should("include", "profile");
   });
 });

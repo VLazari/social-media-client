@@ -8,7 +8,7 @@ Cypress.Commands.add("login", () => {
   cy.get("#loginForm button").contains("Login").click();
 });
 
-describe("Social Media App - login", () => {
+describe("Social Media App - create post", () => {
   const postTitle = "e2e test post";
   const postTag = "test-tag";
   const postMedia =
@@ -24,6 +24,7 @@ describe("Social Media App - login", () => {
 
   it("Can not create post without post title", () => {
     cy.get("#footerActions > .btn-outline-success").click();
+    cy.wait(500);
     cy.get("#postTags").type(`${postTag}`);
     cy.wait(500);
     cy.get("#postMedia").type(`${postMedia}`);
